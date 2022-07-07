@@ -1,5 +1,5 @@
 body{
-  position:relative;
+  position:inherit;
 }
 
 .logo{
@@ -20,8 +20,4 @@ body{
   padding-bottom: 4px;
   text-align: center;
   width:max-content;
-}
-
-.btn-select{
-  background-color: orange;
 }

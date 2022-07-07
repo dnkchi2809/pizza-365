@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Grid } from "@mui/material"
 
 import IntroduceComponent from "./introduce/IntroduceComponent";
 import SizeComponent from "./size/SizeComponent";
@@ -6,21 +6,19 @@ import TypeComponent from "./type/TypeComponent";
 import DrinkComponent from "./drink/DrinkComponent";
 import FormComponent from "./form/FormComponent";
 
-class ContentComponent extends Component {
-    render() {
+function ContentComponent() {
         return (
             <>
                 {/*body*/}
-                <div className="container-fluid pt-3">
+                <Grid className="container-fluid pt-3">
                     <IntroduceComponent/>
                     <SizeComponent/>
                     <TypeComponent/>
                     <DrinkComponent/>  
                     <FormComponent/>            
-                </div>
+                </Grid>
             </>
         )
-    }
 }
 
 export default ContentComponent
