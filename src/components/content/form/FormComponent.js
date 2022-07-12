@@ -215,27 +215,27 @@ function FormComponent() {
             <Grid className="row mb-3 justify-content-center" style={{ borderRadius: "5px" }} id="form-order">
                 <Grid className="col-12 mt-3 mb-4">
                     <Grid className="row form-group mb-2">
-                        <label className="h6">Tên</label>
+                        <label className="h6 text-light">Tên</label>
                         <input className="form-control" placeholder="Nhập tên" id="inp-ten" onInput={onInputCreateOrderName} />
                     </Grid>
                     <Grid className="row form-group mb-2">
-                        <label className="h6">Email</label>
+                        <label className="h6 text-light">Email</label>
                         <input type="email" className="form-control" placeholder="Nhập Email" id="inp-email" onInput={onInputCreateOrderMail} />
                     </Grid>
                     <Grid className="row form-group mb-2">
-                        <label className="h6">Số điện thoại</label>
+                        <label className="h6 text-light">Số điện thoại</label>
                         <input type="tel" className="form-control" placeholder="Nhập Số điện thoại" id="inp-sodienthoai" onInput={onInputCreateOrderPhone} />
                     </Grid>
                     <Grid className="row form-group mb-2">
-                        <label className="h6">Địa chỉ</label>
+                        <label className="h6 text-light">Địa chỉ</label>
                         <input className="form-control" placeholder="Nhập Địa chỉ" id="inp-diachi" onInput={onInputCreateOrderAdress} />
                     </Grid>
                     <Grid className="row form-group mb-2">
-                        <label className="h6">Mã giảm giá</label>
+                        <label className="h6 text-light">Mã giảm giá</label>
                         <input className="form-control" placeholder="Nhập Mã giảm giá" id="inp-magiamgia" onInput={onInputCreateOrderDiscountCode} />
                     </Grid>
                     <Grid className="row form-group mb-2">
-                        <label className="h6">Lời nhắn</label>
+                        <label className="h6 text-light">Lời nhắn</label>
                         <input className="form-control" placeholder="Nhập Lời nhắn" id="inp-loinhan" onInput={onInputCreateOrderMessage} />
                     </Grid>
                     <Grid className="row form-group mb-2">
