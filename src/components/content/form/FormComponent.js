@@ -1,4 +1,4 @@
-import { Grid, Snackbar, Alert } from "@mui/material"
+import { Grid, Snackbar, Alert, Modal } from "@mui/material"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import CreateOrderModal from "../../modals/CreateOrderModal";
@@ -7,10 +7,8 @@ function FormComponent() {
     const dispatch = useDispatch();
 
     const [openSnackBar, setOpenSnackBar] = useState(false);
-    const handleClose = () => setOpenSnackBar(false);
+    const handleSnackBarClose = () => setOpenSnackBar(false);
     const [alert, setAlert] = useState("");
-
-    const [openModal, setOpenModal] = useState(false);
 
     const {
         createOrderName,
@@ -18,6 +16,7 @@ function FormComponent() {
         createOrderPhone,
         createOrderAddress,
         createOrderDiscountCode,
+        createOrderDiscountPercent,
         createOrderMessage,
         createOrderSizePizza,
         createOrderDuongKinh,
@@ -25,9 +24,29 @@ function FormComponent() {
         createOrderSalad,
         createOrderSoLuongNuoc,
         createOrderGiaTien,
+        createOrderGiaTienPhaiTra,
         createOrderTypePizza,
         createOrderDrinkType
     } = useSelector((reduxData) => reduxData.reducer);
+
+    const newOrder = {
+        kichCo: createOrderSizePizza,
+        duongKinh: createOrderDuongKinh,
+        suon: createOrderSuonNuong,
+        salad: createOrderSalad,
+        loaiPizza: createOrderTypePizza,
+        idVourcher: createOrderDiscountCode,
+        phanTramGiamGia: createOrderDiscountPercent,
+        idLoaiNuocUong: createOrderDrinkType,
+        soLuongNuoc: createOrderSoLuongNuoc,
+        hoTen: createOrderName,
+        thanhTien: createOrderGiaTien,
+        thanhToan: createOrderGiaTienPhaiTra,
+        email: createOrderMail,
+        soDienThoai: createOrderPhone,
+        diaChi: createOrderAddress,
+        loiNhan: createOrderMessage
+    }
 
     const onInputCreateOrderName = (e) => {
         dispatch({
@@ -72,6 +91,42 @@ function FormComponent() {
                 createOrderDiscountCode: e.target.value
             }
         })
+
+        fetch("http://42.115.221.44:8080/devcamp-voucher-api/voucher_detail/" + e.target.value)
+            .then((response) => response.json())
+            .then((data) => {
+                dispatch({
+                    type: "INPUT_CREATE_CODE_PERCENT",
+                    payload: {
+                        createOrderDiscountPercent: data.phanTramGiamGia
+                    }
+                })
+
+                let giaTienPhaiTra = createOrderGiaTien - (createOrderGiaTien * data.phanTramGiamGia / 100);
+                dispatch({
+                    type: "INPUT_CREATE_THANH_TOAN",
+                    payload: {
+                        createOrderGiaTienPhaiTra: giaTienPhaiTra
+                    }
+                })
+            })
+            .catch((error) => {
+                console.log(error)
+                dispatch({
+                    type: "INPUT_CREATE_CODE_PERCENT",
+                    payload: {
+                        createOrderDiscountPercent: 0
+                    }
+                })
+
+                let giaTienPhaiTra = createOrderGiaTien;
+                dispatch({
+                    type: "INPUT_CREATE_THANH_TOAN",
+                    payload: {
+                        createOrderGiaTienPhaiTra: giaTienPhaiTra
+                    }
+                })
+            })
     }
 
     const onInputCreateOrderMessage = (e) => {
@@ -84,41 +139,18 @@ function FormComponent() {
     }
 
     const onBtnCreateOrderClick = () => {
-        const newOrder = {
-            kichCo: createOrderSizePizza,
-            duongKinh: createOrderDuongKinh,
-            suon: createOrderSuonNuong,
-            salad: createOrderSalad,
-            loaiPizza: createOrderTypePizza,
-            idVourcher: createOrderDiscountCode,
-            idLoaiNuocUong: createOrderDrinkType,
-            soLuongNuoc: createOrderSoLuongNuoc,
-            hoTen: createOrderName,
-            thanhTien: createOrderGiaTien,
-            email: createOrderMail,
-            soDienThoai: createOrderPhone,
-            diaChi: createOrderAddress,
-            loiNhan: createOrderMessage
-        }
-
         const validOrder = validateOrder(newOrder);
+        //const validOrder = true;
         if (validOrder) {
             console.log("Order valid");
-
-            let content = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newOrder)
-            };
-
-            fetch("http://42.115.221.44:8080/devcamp-pizza365/orders", content)
-                .then((response) => response.json())
-                .then((data) => console.log(data))
-
-            setOpenModal(true);
+            dispatch({
+                type: "MODAL_CREATE_ORDER",
+                payload: {
+                    openModalCreate: true
+                }
+            })
         }
+
     }
 
     const validateOrder = (paramOrder) => {
@@ -172,6 +204,7 @@ function FormComponent() {
         };
         return true;
     }
+
     return (
         <>
             {/*Gửi đơn*/}
@@ -225,16 +258,13 @@ function FormComponent() {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid>
-            {
-                openModal
-                    ?
-                    <CreateOrderModal />
-                    :
-                    null
-            }
-            </Grid>
-            <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBar} autoHideDuration={3000} onClose={handleClose}>
+
+            {/* Modal create order */}
+            <CreateOrderModal />
+
+
+            {/* Snackbar alert */}
+            <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBar} autoHideDuration={3000} onClose={handleSnackBarClose}>
                 <Alert severity="error" sx={{ width: '100%' }}>
                     {alert}
                 </Alert>

@@ -4,6 +4,7 @@ const initialState = {
     createOrderPhone: "",
     createOrderAddress: "",
     createOrderDiscountCode: "",
+    createOrderDiscountPercent: "",
     createOrderMessage: "",
     createOrderSizePizza: "",
     createOrderDuongKinh: "",
@@ -11,9 +12,12 @@ const initialState = {
     createOrderSalad: "",
     createOrderSoLuongNuoc: "",
     createOrderGiaTien: "",
+    createOrderGiaTienPhaiTra: "",
     createOrderTypePizza: "",
-    createOrderDrinkType: ""
-    
+    createOrderDrinkType: "",
+    openModalAlert: false,
+    openModalCreate: false,
+    createResponse: {}
 }
 
 const loadingReducer = (state = initialState, action) => {
@@ -71,10 +75,40 @@ const loadingReducer = (state = initialState, action) => {
                 createOrderDiscountCode: action.payload.createOrderDiscountCode
             };
             break;
+        case "INPUT_CREATE_CODE_PERCENT":
+            return {
+                ...state,
+                createOrderDiscountPercent: action.payload.createOrderDiscountPercent
+            };
+            break;
+        case "INPUT_CREATE_THANH_TOAN":
+            return {
+                ...state,
+                createOrderGiaTienPhaiTra: action.payload.createOrderGiaTienPhaiTra
+            };
+            break;
         case "INPUT_CREATE_MESSAGE":
             return {
                 ...state,
                 createOrderMessage: action.payload.createOrderMessage
+            };
+            break;
+        case "MODAL_CREATE_ORDER":
+            return {
+                ...state,
+                openModalCreate: action.payload.openModalCreate
+            };
+            break;
+        case "CREATE_RESPONSE":
+            return {
+                ...state,
+                createResponse: action.payload.createResponse
+            };
+            break;
+        case "MODAL_ALERT":
+            return {
+                ...state,
+                openModalAlert: action.payload.openModalAlert
             };
             break;
         default:
