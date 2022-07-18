@@ -1,7 +1,6 @@
 import { Box, Typography, Modal } from "@mui/material";
 import { Button, Col, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 
 function CreateOrderModal() {
     const style = {
@@ -55,8 +54,6 @@ function CreateOrderModal() {
         diaChi: createOrderAddress,
         loiNhan: createOrderMessage
     }
-
-    const [propResponse, setPropResponse] = useState({})
 
     const onBtnConfirmCreateOrderClick = () => {
         let content = {

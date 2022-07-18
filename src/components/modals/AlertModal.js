@@ -1,9 +1,12 @@
 import { Box, Typography, Modal } from "@mui/material";
 import { Button, Col, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom"
 
 function AlertModal() {
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const style = {
         position: 'absolute',
@@ -17,8 +20,7 @@ function AlertModal() {
     };
 
     const { openModalAlert, createResponse } = useSelector((reduxData) => reduxData.reducer);
-    console.log(openModalAlert)
-    console.log(createResponse)
+
     const handleModalCreateClose = () => {
         dispatch({
             type: "MODAL_CREATE_ORDER",
@@ -26,7 +28,14 @@ function AlertModal() {
                 openModalAlert: false
             }
         })
+        dispatch({
+            type: "MODAL_ALERT",
+            payload: {
+                openModalAlert: false
+            }
+        })
         window.location.reload();
+        navigate("/");
     }
 
     return (

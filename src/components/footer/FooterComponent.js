@@ -1,6 +1,14 @@
 import {Grid} from "@mui/material"
+import { Button } from "reactstrap";
 
 function FooterComponent() {
+
+    const onBtnToTheTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
         return (
             <>
                 {/*Footer*/}
@@ -8,8 +16,8 @@ function FooterComponent() {
                     <Grid className="text-center p-4">
                         <Grid className="h4">Footer</Grid>
                         <Grid>
-                            <a href="#topPage" className="btn btn-dark text-white"><i className="fas fa-arrow-alt-circle-up"></i> To the
-                                top</a>
+                            <Button className="btn btn-dark text-white" onClick={onBtnToTheTop}><i className="fas fa-arrow-alt-circle-up"></i> To the
+                                top</Button>
                         </Grid>
                         <Grid className="pt-3">
                             <i className="fab fa-facebook-square"></i>&nbsp;

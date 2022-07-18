@@ -20,7 +20,10 @@ const initialState = {
     createResponse: {},
     openSnackbar: false,
     alertString: "",
-    alertSeverity: "error"
+    alertSeverity: "error",
+    createModalState: false,
+    updateModalState: false,
+    deleteModalState: false
 }
 
 const loadingReducer = (state = initialState, action) => {
@@ -125,6 +128,24 @@ const loadingReducer = (state = initialState, action) => {
             return {
                 ...state,
                 alertSeverity: action.payload.alertSeverity
+            };
+            break;
+        case "CREATE_ORDER":
+            return {
+                ...state,
+                createModalState: action.payload.createModalState
+            };
+            break;
+        case "UPDATE_ORDER":
+            return {
+                ...state,
+                updateModalState: action.payload.updateModalState
+            };
+            break;
+        case "DELETE_ORDER":
+            return {
+                ...state,
+                deleteModalState: action.payload.deleteModalState
             };
             break;
         default:
