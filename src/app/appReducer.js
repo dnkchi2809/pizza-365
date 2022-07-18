@@ -17,7 +17,10 @@ const initialState = {
     createOrderDrinkType: "",
     openModalAlert: false,
     openModalCreate: false,
-    createResponse: {}
+    createResponse: {},
+    openSnackbar: false,
+    alertString: "",
+    alertSeverity: "error"
 }
 
 const loadingReducer = (state = initialState, action) => {
@@ -109,6 +112,19 @@ const loadingReducer = (state = initialState, action) => {
             return {
                 ...state,
                 openModalAlert: action.payload.openModalAlert
+            };
+            break;
+        case "OPEN_SNACKBAR":
+            return {
+                ...state,
+                openSnackbar: action.payload.openSnackbar,
+                alertString: action.payload.alertString
+            };
+            break;
+        case "ALERT_SEVERITY":
+            return {
+                ...state,
+                alertSeverity: action.payload.alertSeverity
             };
             break;
         default:

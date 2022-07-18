@@ -10,7 +10,7 @@ function AlertModal() {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '60%',
+        width: '40%',
         border: '1px solid #000',
         backgroundColor: "white",
         padding: "3%"

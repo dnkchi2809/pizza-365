@@ -1,14 +1,10 @@
-import { Grid, Snackbar, Alert, Modal } from "@mui/material"
-import { useState } from "react";
+import { Grid } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
+import SnackbarAlert from "../../alert/SnackbarAlert";
 import CreateOrderModal from "../../modals/CreateOrderModal";
 
 function FormComponent() {
     const dispatch = useDispatch();
-
-    const [openSnackBar, setOpenSnackBar] = useState(false);
-    const handleSnackBarClose = () => setOpenSnackBar(false);
-    const [alert, setAlert] = useState("");
 
     const {
         createOrderName,
@@ -155,51 +151,96 @@ function FormComponent() {
 
     const validateOrder = (paramOrder) => {
         if (paramOrder.kichCo == "") {
-            setOpenSnackBar(true);
-            setAlert("Chưa chọn size Pizza");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Chưa chọn size Pizza"
+                }
+            })
             window.location.href = "#pizza-combo";
             return false;
         }
         if (paramOrder.loaiPizza == "") {
-            setOpenSnackBar(true);
-            setAlert("Chưa chọn loại Pizza");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Chưa chọn loại Pizza"
+                }
+            })
             window.location.href = "#pizza-type";
             return false;
         }
         if (paramOrder.idLoaiNuocUong == "") {
-            setOpenSnackBar(true);
-            setAlert("Chưa chọn loại nước uống");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Chưa chọn loại nước uống"
+                }
+            })
             window.location.href = "#drinklist";
             return false;
         }
         if (paramOrder.hoTen == "") {
-            setOpenSnackBar(true);
-            setAlert("Tên không được để trống");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Tên không được để trống"
+                }
+            })
             return false;
         };
         if (paramOrder.email == "") {
-            setOpenSnackBar(true);
-            setAlert("Email không được để trống");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Email không được để trống"
+                }
+            })
             return false;
         };
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(paramOrder.email) == false) {
-            setOpenSnackBar(true);
-            setAlert("Email không hợp lệ");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Email không hợp lệ"
+                }
+            })
             return false;
         };
         if (paramOrder.soDienThoai == "") {
-            setOpenSnackBar(true);
-            setAlert("Số điện thoại không được để trống");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Số điện thoại không được để trống"
+                }
+            })
             return false;
         };
         if (/^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(paramOrder.soDienThoai) == false) {
-            setOpenSnackBar(true);
-            setAlert("Số điện thoại không hợp lệ");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Số điện thoại không hợp lệ"
+                }
+            })
             return false;
         };
         if (paramOrder.diaChi == "") {
-            setOpenSnackBar(true);
-            setAlert("Địa chỉ không được để trống");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Địa chỉ không được để trống"
+                }
+            })
             return false;
         };
         return true;
@@ -264,11 +305,7 @@ function FormComponent() {
 
 
             {/* Snackbar alert */}
-            <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={openSnackBar} autoHideDuration={3000} onClose={handleSnackBarClose}>
-                <Alert severity="error" sx={{ width: '100%' }}>
-                    {alert}
-                </Alert>
-            </Snackbar>
+            <SnackbarAlert/>
         </>
     )
 }
