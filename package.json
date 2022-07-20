@@ -2,10 +2,6 @@
   "name": "devcamp-pizza365-homepage",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "14.18.0",
-    "npm": "7.6.3"
-  },
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
