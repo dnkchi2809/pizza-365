@@ -6,24 +6,22 @@ function HeaderComponent() {
             {/*Menu*/}
             <Grid className="row">
                 <Grid className="col-12">
-                    <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-warning">
-                        <Grid className="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul className="navbar-nav nav-fill w-100">
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/">Trang chủ<span className="sr-only">(current)</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/#pizza-combo">Combo</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/#pizza-type">Loại Pizza</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/orders">Đơn hàng</a>
-                                </li>
-                            </ul>
+                    <Grid className="navbar navbar-expand-lg navbar-light fixed-top bg-warning">
+                        <Grid className="row w-100 text-center">
+                            <Grid className="col-3">
+                                <a className="nav-link text-dark" href="/">Trang chủ<span className="sr-only">(current)</span></a>
+                            </Grid>
+                            <Grid className="col-3">
+                                <a className="nav-link text-dark" href="/#pizza-combo">Combo</a>
+                            </Grid>
+                            <Grid className="col-3">
+                                <a className="nav-link text-dark" href="/#pizza-type">Loại Pizza</a>
+                            </Grid>
+                            <Grid className="col-3">
+                                <a className="nav-link text-dark" href="/orders">Đơn hàng</a>
+                            </Grid>
                         </Grid>
-                    </nav>
+                    </Grid>
                 </Grid>
             </Grid>
         </>

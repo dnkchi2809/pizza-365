@@ -6,16 +6,18 @@ function IntroduceComponent() {
     return (
         <>
             {/*Logo slogan*/}
-            <Grid className="row mt-5 mt-5 mb-2">
-                <Grid className="col-1">
-                    <img src={require("../../../../src/images/pizza-logo.jpg")} className="logo" alt="logo" />
+            <Grid className="row mt-5 mt-5 mb-1">
+                <Grid className="col-2">
+                    <img src={require("../../../../src/images/pizza-logo.jpg")} className="square" alt="logo" />
                 </Grid>
-                <Grid className="col ml-2">
-                    <Grid className="row">
-                        <p className="h1 text-warning">&nbsp; PIZZA 365</p>
-                    </Grid>
-                    <Grid className="row">
-                        <p className="h3 text-warning">&nbsp;&nbsp;&nbsp;<i>Truly Italian!</i></p>
+                <Grid className="col ml-2 p-0 d-flex align-items-center">
+                    <Grid className="col">
+                        <Grid className="row">
+                            <p className="h1 text-warning">&nbsp; PIZZA 365</p>
+                        </Grid>
+                        <Grid className="row">
+                            <p className="h3 text-warning">&nbsp;&nbsp;&nbsp;<i>Truly Italian!</i></p>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

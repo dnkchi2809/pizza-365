@@ -109,20 +109,20 @@ function OrderTable() {
             </Grid>
             <Grid container>
                 <Grid item>
-                    <TableContainer>
+                    <TableContainer sx={{wordBreak: "break-word", fontSize : "10%"}}>
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Order ID</TableCell>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Họ tên</TableCell>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Email</TableCell>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Số điện thoại</TableCell>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Pizza Size</TableCell>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Pizza Type</TableCell>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Loại nước</TableCell>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Thanh toán</TableCell>
-                                    <TableCell sx={{ width: 150, textAlign: "center", fontWeight : "bold" }}>Trạng thái</TableCell>
-                                    <TableCell sx={{ width: "10%", textAlign: "center", fontWeight : "bold" }}>Action</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Order ID</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Họ tên</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Email</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Số điện thoại</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Pizza Size</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Pizza Type</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Loại nước</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Thanh toán</TableCell>
+                                    <TableCell sx={{ textAlign: "center", fontWeight : "bold" }}>Trạng thái</TableCell>
+                                    <TableCell sx={{ width: "11%", textAlign: "center", fontWeight : "bold" }}>Action</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

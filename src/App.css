@@ -1,12 +1,23 @@
 body{
   background-color:darkred;
-  position:inherit;
+  position:relative;
+}
+
+.hidden-phone{
+  display:none !important;
 }
 
 .logo{
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 100%;
 }
+
+.square {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
 .img-slide{
   display: block;
   height: 550px;
